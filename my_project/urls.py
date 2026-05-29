@@ -20,6 +20,5 @@ from recipe_app import views as recipe_views
 
 urlpatterns = [
     path('recipes/', recipe_views.index, name='recipe_index'),
-    path('admin/', admin.site.urls),
-    
+    path('admin/', admin.site.urls), 
 ]
