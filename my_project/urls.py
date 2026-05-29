@@ -19,6 +19,7 @@ from django.urls import path, include
 from recipe_app import views as recipe_views
 
 urlpatterns = [
+    path('', recipe_views.login_view, name='login'),
     path('recipes/', recipe_views.index, name='recipe_index'),
     path('admin/', admin.site.urls), 
 ]
