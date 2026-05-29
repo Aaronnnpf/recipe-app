@@ -17,3 +17,6 @@ def login_view(request):
 
 def index(request):
     return HttpResponse("You're at the recipe app index.")
+
+def signup_view(request):
+    return render(request, 'registration/signup.html')

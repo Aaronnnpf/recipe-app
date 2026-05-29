@@ -20,6 +20,7 @@ from recipe_app import views as recipe_views
 
 urlpatterns = [
     path('', recipe_views.login_view, name='login'),
+    path('signup/', recipe_views.signup_view, name='signup'),
     path('recipes/', recipe_views.index, name='recipe_index'),
     path('admin/', admin.site.urls), 
 ]
