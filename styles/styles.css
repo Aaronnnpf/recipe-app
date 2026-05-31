@@ -1,16 +1,16 @@
 /* Google Fonts - Add your fonts here */
-/* @import url('https://fonts.googleapis.com/css2?family=YOUR_FONT:wght@400;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* CSS Variables */
 :root {
-    --primary-color: #2f6fdb;
-    --primary-hover: #255ec1;
-    --text-dark: #333;
-    --text-light: #666;
-    --bg-light: #f9f9f9;
-    --border-color: #ddd;
-    --alert-danger: #f8d7da;
-    --alert-text: #721c24;
+    --primary-color: #2f6fdb; /* lighter blue for primary actions */
+    --primary-hover: #255ec1; /* darker blue for hover states */
+    --text-dark: #333; /* dark gray for main text */
+    --text-light: #666; /* medium gray for secondary text */
+    --bg-light: #f9f9f9; /* light gray background */
+    --border-color: #ddd; /* light gray for borders */
+    --alert-danger: #f8d7da; /* light red background for alerts */
+    --alert-text: #721c24; /* red text for alerts */
 }
 
 /* Base Styles */
@@ -27,6 +27,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 /* Navigation */
@@ -65,6 +66,8 @@ nav span {
     align-items: center;
     padding: 2rem 1rem;
     width: 100%;
+    margin: 0 auto;
+    max-width: 1000px;
 }
 
 /* Headers */
@@ -182,6 +185,9 @@ button:hover, .btn:hover {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-title {
@@ -257,9 +263,9 @@ p {
     color: var(--text-light);
 }
 
-/* ============================================ */
-/* MEDIA QUERIES - LARGE SCREENS (PC) */
-/* ============================================ */
+/* MEDIA QUERIES */
+/* LARGE SCREENS (PC) */
+
 @media (min-width: 1024px) {
     body {
         font-size: 1rem;
@@ -296,9 +302,10 @@ p {
     }
 }
 
-/* ============================================ */
-/* MEDIA QUERIES - TABLET (768px - 1023px) */
-/* ============================================ */
+
+/* MEDIA QUERIES */
+/* TABLETS */
+
 @media (min-width: 768px) and (max-width: 1023px) {
     body {
         font-size: 0.95rem;
@@ -335,9 +342,10 @@ p {
     }
 }
 
-/* ============================================ */
-/* MEDIA QUERIES - PHONE (max-width: 767px) */
-/* ============================================ */
+
+/* MEDIA QUERIES */
+/* MOBILE DEVICES */
+
 @media (max-width: 767px) {
     body {
         font-size: 0.9rem;
