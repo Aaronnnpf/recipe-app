@@ -3,6 +3,7 @@
 {% block title %}{{ recipe.title }}{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="assets/styles.css">
 <h1>{{ recipe.title }}</h1>
 <p><strong>Author:</strong> {{ recipe.author.username }}</p>
 <p><strong>Added:</strong> {{ recipe.created_at|date:'M d, Y H:i' }}</p>
