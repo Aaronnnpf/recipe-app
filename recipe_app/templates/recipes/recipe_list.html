@@ -1,0 +1,19 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}Recipes{% endblock %}
+
+{% block content %}
+<h1>Recipes</h1>
+<p><a href="{% url 'recipe_create' %}">Add a new recipe</a></p>
+<ul>
+    {% for recipe in recipes %}
+        <li>
+            <a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a> by {{ recipe.author.username }}
+            <br>
+            <small>Added on {{ recipe.created_at|date:'M d, Y H:i' }}</small>
+        </li>
+    {% empty %}
+        <li>No recipes have been added yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

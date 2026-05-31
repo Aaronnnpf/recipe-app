@@ -1,0 +1,48 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ recipe.title }}</h1>
+<p><strong>Author:</strong> {{ recipe.author.username }}</p>
+<p><strong>Added:</strong> {{ recipe.created_at|date:'M d, Y H:i' }}</p>
+{% if recipe.updated_at and recipe.updated_at != recipe.created_at %}
+    <p><strong>Updated:</strong> {{ recipe.updated_at|date:'M d, Y H:i' }}</p>
+{% endif %}
+
+<h2>Description</h2>
+<p>{{ recipe.description|linebreaks }}</p>
+
+<h2>Ingredients</h2>
+<p>{{ recipe.ingredients|linebreaks }}</p>
+
+<h2>Instructions</h2>
+<p>{{ recipe.instructions|linebreaks }}</p>
+
+{% if recipe.author == request.user %}
+    <p><a href="{% url 'recipe_edit' recipe.id %}">Edit this recipe</a></p>
+{% endif %}
+
+<hr>
+<h2>Comments</h2>
+{% if comments %}
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <strong>{{ comment.author.username }}</strong> wrote:
+                <p>{{ comment.text|linebreaks }}</p>
+                <small>{{ comment.created_at|date:'M d, Y H:i' }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No comments yet. Be the first to comment.</p>
+{% endif %}
+
+<h3>Add a comment</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post comment</button>
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Recipe App{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.5; }
+        nav a { margin-right: 1rem; }
+        .content { max-width: 860px; }
+        .alert { color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 4px; margin-bottom: 1rem; }
+        textarea, input[type=text], input[type=email], input[type=password] { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 0.6rem 1.2rem; border: none; background: #2f6fdb; color: white; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #255ec1; }
+    </style>
+</head>
+<body>
+    <nav>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'recipe_index' %}">Recipes</a>
+            <a href="{% url 'recipe_create' %}">Add Recipe</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            <span>Signed in as {{ request.user.username }}</span>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
