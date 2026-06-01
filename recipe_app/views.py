@@ -14,9 +14,13 @@ def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        remember = request.POST.get('remember')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            # If "Remember me" is checked, set session to persist for 30 days
+            if remember:
+                request.session.set_expiry(30 * 24 * 60 * 60)  # 30 days in seconds
             return redirect('recipe_index')
         return render(
             request,
