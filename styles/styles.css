@@ -43,14 +43,14 @@ nav {
 }
 
 nav a {
-    color: var(--primary-color);
+    color: #000;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: var(--primary-hover);
+    color: #333;
 }
 
 nav span {
@@ -118,7 +118,7 @@ input[type="email"],
 input[type="password"],
 textarea {
     padding: 0.75rem;
-    border: 1px solid var(--border-color);
+    border: 2px solid #000;
     border-radius: 4px;
     font-size: 1rem;
     font-family: inherit;
@@ -161,6 +161,11 @@ button:hover, .btn:hover {
 .btn-block {
     width: 100%;
     display: block;
+}
+
+.btn-center {
+    display: block;
+    margin: 1rem auto;
 }
 
 /* Alerts */
