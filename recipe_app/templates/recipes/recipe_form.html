@@ -7,22 +7,19 @@
 <form method="post">
     {% csrf_token %}
     
-    <div style="margin-bottom: 1.5rem;">
+    <div class="form-field" style="margin-bottom: 1.5rem;">
         <h3 style="margin-bottom: 0.5rem;">Title</h3>
         {{ form.title }}
     </div>
     
-    <div style="margin-bottom: 1.5rem;">
-        <h3 style="margin-bottom: 0.5rem;">Description</h3>
-        {{ form.description }}
-    </div>
+    <!-- Description removed per request -->
     
-    <div style="margin-bottom: 1.5rem;">
+    <div class="form-field" style="margin-bottom: 1.5rem;">
         <h3 style="margin-bottom: 0.5rem;">Ingredients</h3>
         {{ form.ingredients }}
     </div>
     
-    <div style="margin-bottom: 1.5rem;">
+    <div class="form-field" style="margin-bottom: 1.5rem;">
         <h3 style="margin-bottom: 0.5rem;">Instructions</h3>
         {{ form.instructions }}
     </div>

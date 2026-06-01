@@ -42,7 +42,10 @@
 <h3>Add a comment</h3>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Post comment</button>
+    <div class="form-field" style="margin-bottom:1rem;">
+        <h4 style="margin-bottom:0.5rem;">Comment</h4>
+        {{ form.text }}
+    </div>
+    <button type="submit" class="btn btn-center">Post comment</button>
 </form>
 {% endblock %}

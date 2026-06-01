@@ -429,3 +429,29 @@ p {
         font-size: 0.9rem;
     }
 }
+
+/* Center form fields and align inputs under headings */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-field {
+    width: 100%;
+}
+
+.form-field h3 {
+    max-width: 500px;
+    margin: 0 auto 0.5rem auto;
+    text-align: center;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select,
+.form-field .form-control {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}

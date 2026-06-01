@@ -6,11 +6,11 @@ from .models import Comment, Recipe
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ['title', 'description', 'ingredients', 'instructions']
+        fields = ['title', 'ingredients', 'instructions']
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 3}),
-            'ingredients': forms.Textarea(attrs={'rows': 5}),
-            'instructions': forms.Textarea(attrs={'rows': 7}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'ingredients': forms.Textarea(attrs={'rows': 5, 'class': 'form-control'}),
+            'instructions': forms.Textarea(attrs={'rows': 7, 'class': 'form-control'}),
         }
 
 
@@ -22,5 +22,6 @@ class CommentForm(forms.ModelForm):
             'text': forms.Textarea(attrs={
                 'rows': 3,
                 'placeholder': 'Write your comment here...',
+                'class': 'form-control',
             }),
         }
