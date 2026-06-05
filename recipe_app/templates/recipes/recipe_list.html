@@ -3,17 +3,36 @@
 {% block title %}Recipes{% endblock %}
 
 {% block content %}
-<h1>Recipes</h1>
-<p style="text-align: center;"><a href="{% url 'recipe_create' %}" class="btn btn-center">Add a new recipe</a></p>
-<ul>
-    {% for recipe in recipes %}
-        <li>
-            <a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a> by {{ recipe.author.username }}
-            <br>
-            <small>Added on {{ recipe.created_at|date:'M d, Y H:i' }}</small>
-        </li>
-    {% empty %}
-        <li>No recipes have been added yet.</li>
-    {% endfor %}
-</ul>
+<div class="page-intro">
+    <div>
+        <h1>Recipes</h1>
+        <p class="subtitle">Browse your recipe library, add new favorites, and keep every meal idea within reach.</p>
+    </div>
+    <a href="{% url 'recipe_create' %}" class="btn btn-primary btn-large">Add a new recipe</a>
+</div>
+
+{% if recipes %}
+    <div class="recipe-grid">
+        {% for recipe in recipes %}
+            <article class="recipe-card">
+                <div class="recipe-card-content">
+                    <h2><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h2>
+                    <p class="recipe-meta">By {{ recipe.author.username }} · {{ recipe.created_at|date:'M d, Y' }}</p>
+                    {% if recipe.description %}
+                        <p class="recipe-excerpt">{{ recipe.description|truncatewords:20 }}</p>
+                    {% else %}
+                        <p class="recipe-excerpt">Ingredients and instructions are ready to explore.</p>
+                    {% endif %}
+                </div>
+                <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-secondary btn-sm">View recipe</a>
+            </article>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-state card">
+        <h2>No recipes yet</h2>
+        <p>Start your collection by creating a recipe. It's fast, simple, and helps keep your kitchen ideas organized.</p>
+        <a class="btn btn-primary" href="{% url 'recipe_create' %}">Create your first recipe</a>
+    </div>
+{% endif %}
 {% endblock %}
