@@ -3,49 +3,72 @@
 {% block title %}{{ recipe.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ recipe.title }}</h1>
-<p><strong>Author:</strong> {{ recipe.author.username }}</p>
-<p><strong>Added:</strong> {{ recipe.created_at|date:'M d, Y H:i' }}</p>
-{% if recipe.updated_at and recipe.updated_at != recipe.created_at %}
-    <p><strong>Updated:</strong> {{ recipe.updated_at|date:'M d, Y H:i' }}</p>
-{% endif %}
+<div class="recipe-detail-shell">
+    <section class="card recipe-detail-card">
+        <div class="recipe-detail-header">
+            <div>
+                <h1>{{ recipe.title }}</h1>
+                <p class="recipe-meta">By {{ recipe.author.username }} · {{ recipe.created_at|date:'M d, Y H:i' }}</p>
+                {% if recipe.updated_at and recipe.updated_at != recipe.created_at %}
+                    <p class="recipe-meta">Updated {{ recipe.updated_at|date:'M d, Y H:i' }}</p>
+                {% endif %}
+            </div>
+            {% if recipe.author == request.user %}
+                <a class="btn btn-secondary" href="{% url 'recipe_edit' recipe.id %}">Edit recipe</a>
+            {% endif %}
+        </div>
 
-<h2>Description</h2>
-<p>{{ recipe.description|linebreaks }}</p>
+        <div class="recipe-section">
+            <h2>Description</h2>
+            <p>{{ recipe.description|linebreaks }}</p>
+        </div>
 
-<h2>Ingredients</h2>
-<p>{{ recipe.ingredients|linebreaks }}</p>
+        <div class="recipe-section">
+            <h2>Ingredients</h2>
+            <p>{{ recipe.ingredients|linebreaks }}</p>
+        </div>
 
-<h2>Instructions</h2>
-<p>{{ recipe.instructions|linebreaks }}</p>
+        <div class="recipe-section">
+            <h2>Instructions</h2>
+            <p>{{ recipe.instructions|linebreaks }}</p>
+        </div>
+    </section>
 
-{% if recipe.author == request.user %}
-    <p><a href="{% url 'recipe_edit' recipe.id %}">Edit this recipe</a></p>
-{% endif %}
+    <section class="comment-shell">
+        <div class="card comment-list-card">
+            <div class="section-title-row">
+                <h2>Comments</h2>
+                <span class="comment-count">{{ comments|length }} comment{{ comments|length|pluralize }}</span>
+            </div>
 
-<hr>
-<h2>Comments</h2>
-{% if comments %}
-    <ul>
-        {% for comment in comments %}
-            <li>
-                <strong>{{ comment.author.username }}</strong> wrote:
-                <p>{{ comment.text|linebreaks }}</p>
-                <small>{{ comment.created_at|date:'M d, Y H:i' }}</small>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No comments yet. Be the first to comment.</p>
-{% endif %}
+            {% if comments %}
+                <div class="comment-list">
+                    {% for comment in comments %}
+                        <article class="comment-card">
+                            <div class="comment-heading">
+                                <strong>{{ comment.author.username }}</strong>
+                                <span>{{ comment.created_at|date:'M d, Y H:i' }}</span>
+                            </div>
+                            <p>{{ comment.text|linebreaks }}</p>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted">No comments yet. Be the first to share feedback.</p>
+            {% endif %}
+        </div>
 
-<h3>Add a comment</h3>
-<form method="post">
-    {% csrf_token %}
-    <div class="form-field" style="margin-bottom:1rem;">
-        <h4 style="margin-bottom:0.5rem;">Comment</h4>
-        {{ form.text }}
-    </div>
-    <button type="submit" class="btn btn-center">Post comment</button>
-</form>
+        <div class="card comment-form-card">
+            <h2>Add a comment</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_text">Comment</label>
+                    {{ form.text }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Post comment</button>
+            </form>
+        </div>
+    </section>
+</div>
 {% endblock %}
