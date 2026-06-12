@@ -3,16 +3,16 @@
 
 /* CSS Variables */
 :root {
-    --primary-color: #2f6fdb;
-    --primary-hover: #255ec1;
-    --secondary-color: #f7c9d9;
-    --text-dark: #1f2937;
-    --text-light: #6b7280;
-    --bg-light: #f7f6fb;
-    --surface: #ffffff;
-    --border-color: #e5e7eb;
-    --alert-danger: #fde8e8;
-    --alert-text: #842029;
+    --primary-color: #2f6fdb; /* Blue */
+    --primary-hover: #255ec1; /* Darker Blue for hover */
+    --secondary-color: #f7c9d9; /* Light Pink */
+    --text-dark: #1f2937; /* Dark Gray */
+    --text-light: #6b7280; /* Light Gray */
+    --bg-light: #f7f6fb; /* Light Background */
+    --surface: #ffffff; /* White Surface */
+    --border-color: #e5e7eb; /* Light Gray Border */
+    --alert-danger: #fde8e8; /* Light Red Background for Alerts */
+    --alert-text: #842029; /* Dark Red Text for Alerts */
 }
 
 /* Base Styles */
