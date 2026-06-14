@@ -283,7 +283,7 @@ a {
 
 .form-control {
     width: 100%;
-    padding: 0.85rem 1rem;
+    padding: 1rem 1rem;
     border-radius: 12px;
     border: 1px solid #d1d5db;
     background-color: #f8fafc;
@@ -296,6 +296,15 @@ a {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 4px rgba(47, 111, 219, 0.12);
     background-color: #ffffff;
+}
+
+/* Form-specific tweaks */
+.form-card .form-control {
+    padding: 1rem 1rem;
+}
+
+.form-card textarea.form-control {
+    min-height: 140px;
 }
 
 label {
@@ -608,6 +617,15 @@ label {
     .card {
         padding: 1rem;
         margin-bottom: 1rem;
+    }
+
+    /* Keep .form-card padding a bit larger than generic .card */
+    .form-card {
+        padding: 1.5rem;
+    }
+
+    .form-card .form-control {
+        padding: 0.85rem 0.9rem;
     }
 
     p {
