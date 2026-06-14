@@ -172,7 +172,17 @@ a {
 
 /* Add padding to recipe detail card so content isn't flush against border */
 .recipe-detail-card {
-    padding: 1.5rem;
+    padding: 2rem;
+}
+
+/* Ensure sections inside the recipe detail have internal spacing */
+.recipe-section {
+    padding: 0.75rem 0;
+}
+
+.recipe-section p {
+    margin: 0.25rem 0 0;
+    padding: 0.5rem 0.25rem;
 }
 
 .recipe-card-content h2 {
