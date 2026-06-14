@@ -298,7 +298,6 @@ a {
     background-color: #ffffff;
 }
 
-/* Form-specific tweaks */
 .form-card .form-control {
     padding: 1rem 1rem;
 }
@@ -379,18 +378,15 @@ label {
     align-self: center;
 }
 
-.auth-card .btn-block {
-    width: auto;
-    max-width: 240px;
-    display: block;
-    margin: 1rem auto 0;
-}
-
+.auth-card .btn-block,
 .form-card .btn-block {
     width: auto;
-    max-width: 240px;
+    max-width: 260px;
     display: block;
     margin: 1rem auto 0;
+    padding: 1rem 1.75rem;
+    font-size: 1.05rem;
+    border-radius: 14px;
 }
 
 .recipe-section {
