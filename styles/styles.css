@@ -360,7 +360,6 @@ label {
     align-self: center;
 }
 
-/* Make auth (login) and comment buttons less stretched */
 .auth-card .btn-block {
     width: auto;
     min-width: 160px;
@@ -368,12 +367,11 @@ label {
     display: inline-block;
 }
 
-/* Make create/save recipe button less stretched */
 .form-card .btn-block {
     width: auto;
-    min-width: 160px;
-    align-self: center;
-    display: inline-block;
+    max-width: 240px;
+    display: block;
+    margin: 1rem auto 0;
 }
 
 .recipe-section {
