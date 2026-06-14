@@ -170,6 +170,11 @@ a {
     padding: 1.5rem;
 }
 
+/* Add padding to recipe detail card so content isn't flush against border */
+.recipe-detail-card {
+    padding: 1.5rem;
+}
+
 .recipe-card-content h2 {
     font-size: 1.35rem;
     margin-bottom: 0.65rem;
@@ -357,6 +362,14 @@ label {
 
 /* Make auth (login) and comment buttons less stretched */
 .auth-card .btn-block {
+    width: auto;
+    min-width: 160px;
+    align-self: center;
+    display: inline-block;
+}
+
+/* Make create/save recipe button less stretched */
+.form-card .btn-block {
     width: auto;
     min-width: 160px;
     align-self: center;
