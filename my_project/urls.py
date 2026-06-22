@@ -38,5 +38,15 @@ urlpatterns = [
         recipe_views.recipe_edit,
         name='recipe_edit',
     ),
+    path(
+        'recipes/<int:recipe_id>/delete/',
+        recipe_views.recipe_delete,
+        name='recipe_delete',
+    ),
+    path(
+        'recipes/<int:recipe_id>/comments/<int:comment_id>/delete/',
+        recipe_views.comment_delete,
+        name='comment_delete',
+    ),
     path('admin/', admin.site.urls),
 ]

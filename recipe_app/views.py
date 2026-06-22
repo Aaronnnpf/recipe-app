@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import CommentForm, RecipeForm
-from .models import Recipe
+from .models import Comment, Recipe
 
 
 def login_view(request):
@@ -132,3 +132,41 @@ def recipe_edit(request, recipe_id):
         'form': form,
         'title': 'Edit Recipe',
     })
+
+
+def recipe_delete(request, recipe_id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    if recipe.author != request.user:
+        return HttpResponse(
+            'You are not allowed to delete this recipe.',
+            status=403,
+        )
+
+    if request.method == 'POST':
+        recipe.delete()
+        return redirect('recipe_index')
+
+    return render(request, 'recipes/recipe_confirm_delete.html', {
+        'recipe': recipe,
+    })
+
+
+def comment_delete(request, recipe_id, comment_id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    comment = get_object_or_404(Comment, id=comment_id, recipe=recipe)
+
+    if comment.author != request.user:
+        return HttpResponse(
+            'You are not allowed to delete this comment.',
+            status=403,
+        )
+
+    if request.method == 'POST':
+        comment.delete()
+    return redirect('recipe_detail', recipe_id=recipe.id)

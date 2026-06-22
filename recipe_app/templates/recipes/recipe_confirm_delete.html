@@ -1,0 +1,26 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}Delete {{ recipe.title }}{% endblock %}
+
+{% block content %}
+<div class="recipe-detail-shell">
+    <section class="card recipe-detail-card">
+        <div class="recipe-detail-header">
+            <div>
+                <h1>Delete recipe</h1>
+                <p class="recipe-meta">Are you sure you want to delete "{{ recipe.title }}"?</p>
+            </div>
+        </div>
+
+        <div class="recipe-section">
+            <p>This action cannot be undone. All comments and related data will be removed.</p>
+        </div>
+
+        <form method="post" class="delete-confirm-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete recipe</button>
+            <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </section>
+</div>
+{% endblock %}
